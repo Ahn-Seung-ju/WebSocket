@@ -22,9 +22,9 @@ public class HandShakeInerceptor extends HttpSessionHandshakeInterceptor {
 		System.out.println("URL: " + request.getURI());
 		
 		HttpServletRequest req =  ssreq.getServletRequest();
-
+		
 		String id =(String)req.getSession().getAttribute("id");
-
+		
 		attributes.put("id", id);
         System.out.println("HttpSession에 저장된 id:"+id);
 
@@ -36,10 +36,10 @@ public class HandShakeInerceptor extends HttpSessionHandshakeInterceptor {
 	@Override
 	public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
 			Exception ex) {
-
+		
 		System.out.println("After Handshake");
-
+		
 		super.afterHandshake(request, response, wsHandler, ex);
 	}
-
+	
 }

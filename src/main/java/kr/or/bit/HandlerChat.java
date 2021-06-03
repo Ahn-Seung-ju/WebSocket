@@ -32,7 +32,7 @@ public class HandlerChat extends TextWebSocketHandler {
 		Map<String, String> mapReceive = objectMapper.readValue(message.getPayload(), Map.class);
 		Map<String,Object> sessionmap = session.getAttributes();
 		String id = (String)sessionmap.get("id");
-		System.out.println(id);
+		System.out.println("WebSocketSession이 interceptor한 session 값: " + id);
 		switch (mapReceive.get("cmd")) {
 		
 		// CLIENT 입장

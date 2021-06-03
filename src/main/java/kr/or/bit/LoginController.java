@@ -22,7 +22,7 @@ public class LoginController {
 	@RequestMapping(value = "loginProcess.do", method = RequestMethod.POST)
 	public String loginProcess(@RequestParam String id, HttpServletRequest request) {
 		
-		System.out.println(id);
+		System.out.println("입력한 섹션 아이디" + id);
 		LOGGER.info("어서오고" + id);
 		
 		HttpSession session = request.getSession();

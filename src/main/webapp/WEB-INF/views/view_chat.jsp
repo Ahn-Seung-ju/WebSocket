@@ -16,6 +16,7 @@
 			sendChat: function() {
 				this._sendMessage('${param.bang_id}', 'CMD_MSG_SEND', $('#message').val());
 				$('#message').val('');
+				setTimeout( () => {$('#messagediv').css('display', 'none');}, 3000);
 			},
 			sendEnter: function() {
 				this._sendMessage('${param.bang_id}', 'CMD_ENTER', $('#message').val());
@@ -26,6 +27,7 @@
 				// 정의된 CMD 코드에 따라서 분기 처리
 				if(msgData.cmd == 'CMD_MSG_SEND') {					
 					$('#divChatData').append('<div>' + msgData.msg + '</div>');
+					$('#messagediv').css('display', 'block');
 				}
 				// 입장
 				else if(msgData.cmd == 'CMD_ENTER') {
@@ -35,6 +37,11 @@
 				else if(msgData.cmd == 'CMD_EXIT') {					
 					$('#divChatData').append('<div>' + msgData.msg + '</div>');
 				}
+				
+				/* $('#messagediv').css("display","block");
+				setTimeout((){
+					$('#messagediv').css("display","none")
+				},3000); */
 			},
 			closeMessage: function(str) {
 				$('#divChatData').append('<div>' + '연결 끊김 : ' + str + '</div>');
@@ -72,6 +79,7 @@
 	</script>
 </head>
 <body>
+	<div id = "messagediv" style = "background-color: green; display: none"><p>메세지가 왔습니다</p></div>
 	<div style="width: 800px; height: 700px; padding: 10px; border: solid 1px #e1e3e9;">
 		<div id="divChatData"></div>
 	</div>
